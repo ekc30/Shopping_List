@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Name of the new list"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/edtTxtNewListName" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Database list"
+        android:checked="false"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/checkboxNewListDialogDataBaseList"
+        android:layout_below="@+id/edtTxtNewListName"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/checkboxNewListDialogDataBaseList">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:id="@+id/btnNewListDialogCancel" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:layout_toEndOf="@+id/btnNewListDialogCancel"
+            android:layout_marginStart="10dp"
+            android:id="@+id/btnNewListDialogAddList" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -9,11 +9,20 @@ import java.util.ArrayList;
 public class List implements Parcelable {
 
     private ArrayList<String> list;
-    private String description;
+    private String name, description;
 
-    public List(ArrayList<String> list, String description) {
+    public List(ArrayList<String> list, String name, String description) {
+        this.name = name;
         this.list = list;
         this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public ArrayList<String> getList() {

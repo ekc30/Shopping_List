@@ -37,13 +37,26 @@ public class ListsDisplayerRecyclerViewAdapter extends RecyclerView.Adapter<List
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // set the ViewHolders to display information about each list
+        holder.txtListName.setText(lists.get(holder.getAdapterPosition()).getName());
+        holder.txtListDescription.setText(lists.get(holder.getAdapterPosition()).getDescription());
+        holder.txtListLength.setText(String.valueOf(lists.get(holder.getAdapterPosition()).getList().size()));
+
         // navigate user to view items in selected list
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(context, ListActivity.class);
                 intent.putExtra(LIST_INDEX_TAG, holder.getAdapterPosition());
                 context.startActivity(intent);
+            }
+        });
+
+        holder.parent.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                // display dialog where the user can rename or delete the selected list
+                return false;
             }
         });
     }

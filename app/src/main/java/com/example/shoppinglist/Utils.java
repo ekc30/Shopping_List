@@ -21,6 +21,12 @@ public class Utils {
         this.context = context;
         sharedPreferences = context.getSharedPreferences("listDB", Context.MODE_PRIVATE);
 
+        if(getLists() == null) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            Gson gson = new Gson();
+            editor.putString(LIST_KEY, gson.toJson(new ArrayList<List>()));
+            editor.commit();
+        }
     }
 
     // get the single instance of the class
@@ -38,5 +44,28 @@ public class Utils {
         return gson.fromJson(sharedPreferences.getString(LIST_KEY, null), type);
     }
 
+    public boolean addList(List list) {
+        ArrayList<List> lists = getLists();
+        if(lists != null) {
+            if(lists.add(list)) {
+                Gson gson = new Gson();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove(LIST_KEY);
+                editor.putString(LIST_KEY, gson.toJson(lists));
+                editor.commit();
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public boolean containsListWithName(String name) {
+        ArrayList<List> lists = getLists();
+        for(List l : lists) {
+            if(l.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

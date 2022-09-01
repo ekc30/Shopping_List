@@ -1,17 +1,33 @@
-the challenge here will be in storing the data, not writing the functionality itself as the UI and
+ - the challenge here will be in storing the data, not writing the functionality itself as the UI and
 the functions of the components are generally simple
+ - how do I connect the app to Firebase to store lists there?
 
+ - still need to work out how to connect to a remote repository and push changes
+
+ - when adding a list do I put another EditText in NewListDialog or just leave description blank
+ and edit it in ListActivity? (there will be an edit function there anyway)
+
+ - when is Parcelable used? do I really need it?
+
+ - can I really finish this app before learning about databases?
+
+ - do I need a callback interface in NewListDialog?
+    no, but let's use one anyway
+
+ - E/SpannableStringBuilder: SPAN_EXCLUSIVE_EXCLUSIVE spans cannot have a zero length   is displayed
+ in the logcat when I click on the EditText in the NewListDialog to access the keyboard - why?
 
 MainActivity.java:
 
 ListDisplayerRecyclerViewAdapter.java:
 
 Utils.java:
-
+    this class is the access point to the list of lists stored on device memory, so I can access
+    them by calling one method
 
 List.java:
-a model class
-each List item represents a List object, which has an arraylist on the items themselves and a
-description
+    a model class
+    each List item represents a List object, which has an arraylist on the items themselves and a
+    description
 
 ListActivity.java:
