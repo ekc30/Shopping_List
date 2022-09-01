@@ -40,6 +40,25 @@ public class List implements Parcelable {
                 '}';
     }
 
+    // what does this do exactly?
+    private List(Parcel in) {
+        in.readList(this.list, List.class.getClassLoader());
+        this.description = in.readString();
+    }
+
+    // what is this?
+    public static final Creator<List> CREATOR = new Creator<List>() {
+        @Override
+        public List createFromParcel(Parcel parcel) {
+            return new List(parcel);
+        }
+
+        @Override
+        public List[] newArray(int i) {
+            return new List[i];
+        }
+    };
+
     @Override
     public int describeContents() {
         return 0;
@@ -47,6 +66,7 @@ public class List implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.write
+        parcel.writeList(this.list);
+        parcel.writeString(this.description);
     }
 }
