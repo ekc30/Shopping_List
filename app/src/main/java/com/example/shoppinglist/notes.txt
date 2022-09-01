@@ -1,0 +1,17 @@
+the challenge here will be in storing the data, not writing the functionality itself as the UI and
+the functions of the components are generally simple
+
+
+MainActivity.java:
+
+ListDisplayerRecyclerViewAdapter.java:
+
+Utils.java:
+
+
+List.java:
+a model class
+each List item represents a List object, which has an arraylist on the items themselves and a
+description
+
+ListActivity.java:

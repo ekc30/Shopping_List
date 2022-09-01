@@ -1,6 +1,7 @@
 package com.example.shoppinglist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 public class ListsDisplayerRecyclerViewAdapter extends RecyclerView.Adapter<ListsDisplayerRecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "ListsDisplayerRecyclerV";
+
+    public static final String LIST_INDEX_TAG = "list_index";
 
     private Context context;
 
@@ -35,6 +38,14 @@ public class ListsDisplayerRecyclerViewAdapter extends RecyclerView.Adapter<List
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // navigate user to view items in selected list
+        holder.parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.putExtra(LIST_INDEX_TAG, holder.getAdapterPosition());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
