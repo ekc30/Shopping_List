@@ -64,4 +64,15 @@ public class MainActivity extends AppCompatActivity implements NewListDialog.Pas
             Toast.makeText(this, "List could not be created", Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        lists = Utils.getInstance(this).getLists();
+        if(adapter.getListIndex() != -1) {
+            Toast.makeText(this, "List with index " + adapter.getListIndex() + " modified", Toast.LENGTH_SHORT).show();
+            adapter.notifyItemChanged(adapter.getListIndex());
+            adapter.setListIndex(-1);
+        }
+    }
 }

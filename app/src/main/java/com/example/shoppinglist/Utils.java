@@ -59,6 +59,10 @@ public class Utils {
         return false;
     }
 
+    public void removeList(int listIndex) {
+        // TODO: finish
+    }
+
     public boolean containsListWithName(String name) {
         ArrayList<List> lists = getLists();
         for(List l : lists) {
@@ -67,5 +71,42 @@ public class Utils {
             }
         }
         return false;
+    }
+
+    public boolean addItemToList(int listIndex, String item) {
+        ArrayList<List> lists = getLists();
+        if(lists != null) {
+            if(lists.size() > listIndex && listIndex > -1) {
+                if(lists.get(listIndex) != null) {
+                    if(lists.get(listIndex).getList().add(item)) {
+                        Gson gson = new Gson();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.remove(LIST_KEY);
+                        editor.putString(LIST_KEY, gson.toJson(lists));
+                        editor.commit();
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public void removeItemFromList(int listIndex, int itemIndex) {
+        ArrayList<List> lists = getLists();
+        if(lists != null) {
+            if(listIndex < lists.size()) {
+                if(lists.get(listIndex) != null) {
+                    if(itemIndex < lists.get(listIndex).getList().size()) {
+                        lists.get(listIndex).getList().remove(itemIndex);
+                        Gson gson = new Gson();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.remove(LIST_KEY);
+                        editor.putString(LIST_KEY, gson.toJson(lists));
+                        editor.commit();
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
  - the challenge here will be in storing the data, not writing the functionality itself as the UI and
 the functions of the components are generally simple
+
  - how do I connect the app to Firebase to store lists there?
 
  - still need to work out how to connect to a remote repository and push changes
@@ -8,18 +9,46 @@ the functions of the components are generally simple
  and edit it in ListActivity? (there will be an edit function there anyway)
 
  - when is Parcelable used? do I really need it?
+    I don't think so - Parcelable is only needed when objects are passed between activities and
+    fragments, not for storage purposes
 
  - can I really finish this app before learning about databases?
+    yep I can but a rewrite might come in handy anyway when I finish the databases section
 
  - do I need a callback interface in NewListDialog?
     no, but let's use one anyway
 
- - E/SpannableStringBuilder: SPAN_EXCLUSIVE_EXCLUSIVE spans cannot have a zero length   is displayed
+ - "E/SpannableStringBuilder: SPAN_EXCLUSIVE_EXCLUSIVE spans cannot have a zero length" is displayed
  in the logcat when I click on the EditText in the NewListDialog to access the keyboard - why?
 
+ - what do I do about the warnings?
+
+ - how do I make the label from the top disappear?
+
+ - adjust colours according to light/dark mode
+
+ - back button in ListActivity?
+    not sure where to put it, like the design as it is, can always use back button
+
+ - onClickListener to edit list name?
+
+ - where to display list description? (in ListActivity)
+
+ - how do I update the item count of each list in MainActivity?
+
+tasks:
+    - add button for list items
+    - edit button for list items
+    - update the item count of a specific list in MainActivity when list item added/deleted
+    - write remove function for lists
+
 MainActivity.java:
+    the entry point to the program where all existing lists are displayed. the user can select a
+    list and will then be navigated to the ListActivity to view the elements in the list
 
 ListDisplayerRecyclerViewAdapter.java:
+    the connection between the recycler view in MainActivity and the background storage, basically
+    defines how the recycler view behaves
 
 Utils.java:
     this class is the access point to the list of lists stored on device memory, so I can access
@@ -31,3 +60,5 @@ List.java:
     description
 
 ListActivity.java:
+    view the elements and description of a selected list here. the user can add, edit, delete
+    elements and edit the description

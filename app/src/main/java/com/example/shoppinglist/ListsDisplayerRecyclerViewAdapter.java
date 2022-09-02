@@ -24,6 +24,8 @@ public class ListsDisplayerRecyclerViewAdapter extends RecyclerView.Adapter<List
 
     private ArrayList<List> lists = new ArrayList<>();
 
+    private int listIndex = -1;
+
     public ListsDisplayerRecyclerViewAdapter(Context context) {
         this.context = context;
     }
@@ -48,6 +50,7 @@ public class ListsDisplayerRecyclerViewAdapter extends RecyclerView.Adapter<List
             public void onClick(View view) {
                 Intent intent = new Intent(context, ListActivity.class);
                 intent.putExtra(LIST_INDEX_TAG, holder.getAdapterPosition());
+                listIndex = holder.getAdapterPosition();
                 context.startActivity(intent);
             }
         });
@@ -70,6 +73,14 @@ public class ListsDisplayerRecyclerViewAdapter extends RecyclerView.Adapter<List
     public void setLists(ArrayList<List> list) {
         this.lists = list;
         notifyDataSetChanged();
+    }
+
+    public int getListIndex() {
+        return listIndex;
+    }
+
+    public void setListIndex(int listIndex) {
+        this.listIndex = listIndex;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
