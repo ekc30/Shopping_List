@@ -14,9 +14,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+public class ListActivity extends AppCompatActivity implements ListRecViewAdapter.CallEditDialogInterface, EditListItemDialog.PassEditedItemInterface {
 
-public class ListActivity extends AppCompatActivity {
+    public static final String EDIT_ITEM_KEY_STRING = "editItemKeyString";
+    public static final String EDIT_ITEM_KEY_LIST_INDEX = "editItemKeyListIndex";
+    public static final String EDIT_ITEM_KEY_ITEM_INDEX = "editItemKeyItemIndex";
 
     private Button btnAdd;
     private TextView txtListName;
@@ -75,5 +77,22 @@ public class ListActivity extends AppCompatActivity {
         txtListName = findViewById(R.id.txtListActivityListName);
         edtTxtNewItem = findViewById(R.id.edtTxtNewItem);
         listItemsRecView = findViewById(R.id.listDisplayRecView);
+    }
+
+    @Override
+    public void callEditDialog(int listIndex, int itemIndex) {
+        EditListItemDialog editListItemDialog = new EditListItemDialog();
+        Bundle bundle = new Bundle();
+        bundle.putString(EDIT_ITEM_KEY_STRING, list.getList().get(itemIndex));
+        bundle.putInt(EDIT_ITEM_KEY_LIST_INDEX, listIndex);
+        bundle.putInt(EDIT_ITEM_KEY_ITEM_INDEX, itemIndex);
+        editListItemDialog.setArguments(bundle);
+        editListItemDialog.show(getSupportFragmentManager(), "edit item dialog");
+    }
+
+    @Override
+    public void passNewItemName(String name, int itemIndex) {
+        list.getList().set(itemIndex, name);
+
     }
 }

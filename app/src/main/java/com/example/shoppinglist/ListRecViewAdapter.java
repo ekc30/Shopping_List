@@ -2,6 +2,8 @@ package com.example.shoppinglist;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
+import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,12 @@ import java.util.ArrayList;
 public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.ViewHolder> {
 
     private static final String TAG = "ListRecViewAdapter";
+
+    public interface CallEditDialogInterface {
+        void callEditDialog(int listIndex, int itemIndex);
+    }
+
+    private CallEditDialogInterface callEditDialogInterface;
 
     private Context context;
 
@@ -49,6 +57,8 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // edit item
+                        callEditDialogInterface = (CallEditDialogInterface) context;
+                        callEditDialogInterface.callEditDialog(listIndex, holder.getAdapterPosition());
                     }
                 });
                 builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {

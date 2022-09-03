@@ -42,6 +42,9 @@ tasks:
     - update the item count of a specific list in MainActivity when list item added/deleted
     - write remove function for lists
 
+    - write Utils class function for changing the text of an item
+    - finish passNewItemName in ListActivity
+
 MainActivity.java:
     the entry point to the program where all existing lists are displayed. the user can select a
     list and will then be navigated to the ListActivity to view the elements in the list
