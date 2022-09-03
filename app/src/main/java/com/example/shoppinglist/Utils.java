@@ -96,7 +96,7 @@ public class Utils {
         ArrayList<List> lists = getLists();
         if(lists != null) {
             if(listIndex < lists.size()) {
-                if(lists.get(listIndex) != null) {
+                if(lists.get(listIndex) != null && lists.get(listIndex).getList() != null) {
                     if(itemIndex < lists.get(listIndex).getList().size()) {
                         lists.get(listIndex).getList().remove(itemIndex);
                         Gson gson = new Gson();
@@ -104,6 +104,26 @@ public class Utils {
                         editor.remove(LIST_KEY);
                         editor.putString(LIST_KEY, gson.toJson(lists));
                         editor.commit();
+                    }
+                }
+            }
+        }
+    }
+
+    public void changeItemName(int listIndex, int itemIndex, String newItemName) {
+        ArrayList<List> lists = getLists();
+        if(lists != null) {
+            if(listIndex < lists.size()) {
+                if(lists.get(listIndex) != null && lists.get(listIndex).getList() != null) {
+                    if(itemIndex < lists.get(listIndex).getList().size()) {
+                        if(!lists.get(listIndex).getList().contains(newItemName)) {
+                            lists.get(listIndex).getList().set(itemIndex, newItemName);
+                            Gson gson = new Gson();
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.remove(LIST_KEY);
+                            editor.putString(LIST_KEY, gson.toJson(lists));
+                            editor.commit();
+                        }
                     }
                 }
             }

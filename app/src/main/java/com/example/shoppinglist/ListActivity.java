@@ -93,6 +93,7 @@ public class ListActivity extends AppCompatActivity implements ListRecViewAdapte
     @Override
     public void passNewItemName(String name, int itemIndex) {
         list.getList().set(itemIndex, name);
-
+        Utils.getInstance(this).changeItemName(listIndex, itemIndex, name);
+        adapter.notifyItemChanged(itemIndex);
     }
 }

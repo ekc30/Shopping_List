@@ -47,6 +47,7 @@ public class EditListItemDialog extends DialogFragment {
         String item = bundle.getString(EDIT_ITEM_KEY_STRING, null);
         if(item != null) {
             builder.setTitle("Edit " + item);
+            edtTxt.setText(item);
         }
         // get the list index
         int listIndex = bundle.getInt(EDIT_ITEM_KEY_LIST_INDEX);
