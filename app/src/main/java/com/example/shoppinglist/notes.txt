@@ -35,15 +35,14 @@ the functions of the components are generally simple
  - where to display list description? (in ListActivity)
 
  - how do I update the item count of each list in MainActivity?
+    fixed for now, need to find a better solution to resetting the whole data set
+
+ - how do the notify functions work exactly for recycler view adapters?
 
 tasks:
-    - add button for list items
-    - edit button for list items
-    - update the item count of a specific list in MainActivity when list item added/deleted
-    - write remove function for lists
-
-    - write Utils class function for changing the text of an item
-    - finish passNewItemName in ListActivity
+    - add a back arrow button in ListActivity
+    - add an information button next to the list name in ListActivity which triggers a dialog with
+    the list description - option to edit it here
 
 MainActivity.java:
     the entry point to the program where all existing lists are displayed. the user can select a

@@ -57,9 +57,11 @@ public class MainActivity extends AppCompatActivity implements NewListDialog.Pas
         List newList = new List(new ArrayList<>(), name, description);
         if(lists.add(newList)) {
             Utils.getInstance(this).addList(newList);
+            // TODO: fix this - not the ideal solution, notify doesn't seem to work for a single
+            //  item, need to reset the whole list
+            // adapter.notifyItemInserted(lists.size());
+            adapter.setLists(lists);
             Toast.makeText(this, "List created", Toast.LENGTH_SHORT).show();
-            int index = Utils.getInstance(this).getLists().indexOf(newList);
-            adapter.notifyItemChanged(index);
         } else {
             Toast.makeText(this, "List could not be created", Toast.LENGTH_SHORT).show();
         }
@@ -69,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements NewListDialog.Pas
     protected void onPostResume() {
         super.onPostResume();
         lists = Utils.getInstance(this).getLists();
+        // TODO: not the ideal solution, notify doesn't seem to work with a single item
+        adapter.setLists(lists);
         if(adapter.getListIndex() != -1) {
             Toast.makeText(this, "List with index " + adapter.getListIndex() + " modified", Toast.LENGTH_SHORT).show();
             adapter.notifyItemChanged(adapter.getListIndex());

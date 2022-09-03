@@ -1,6 +1,7 @@
 package com.example.shoppinglist;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
@@ -58,7 +60,25 @@ public class ListsDisplayerRecyclerViewAdapter extends RecyclerView.Adapter<List
         holder.parent.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                // display dialog where the user can rename or delete the selected list
+                // display dialog where the user can delete the selected list
+                AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                        .setTitle("Are you sure you want to delete " + lists.get(holder.getAdapterPosition()).getName() + "?");
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // don't do anything
+                    }
+                });
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // delete the list
+                        lists.remove(holder.getAdapterPosition());
+                        Utils.getInstance(context).removeList(holder.getAdapterPosition());
+                        notifyItemRemoved(holder.getAdapterPosition());
+                    }
+                });
+                builder.create().show();
                 return false;
             }
         });

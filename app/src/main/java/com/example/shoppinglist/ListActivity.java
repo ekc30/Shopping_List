@@ -60,7 +60,6 @@ public class ListActivity extends AppCompatActivity implements ListRecViewAdapte
                             Utils.getInstance(ListActivity.this).addItemToList(listIndex, newItem);
                             adapter.notifyItemInserted(list.getList().size());
                             edtTxtNewItem.setText("");
-                            // how do I get the calling activity here? - could just use activity.adapter.notifyItemChanged(listIndex)
                         }
                     } else {
                         Toast.makeText(ListActivity.this, "List already contains item", Toast.LENGTH_SHORT).show();

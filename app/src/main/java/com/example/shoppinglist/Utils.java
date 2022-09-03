@@ -60,7 +60,17 @@ public class Utils {
     }
 
     public void removeList(int listIndex) {
-        // TODO: finish
+        ArrayList<List> lists = getLists();
+        if(lists != null) {
+            if(listIndex < lists.size()) {
+                lists.remove(listIndex);
+                Gson gson = new Gson();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove(LIST_KEY);
+                editor.putString(LIST_KEY, gson.toJson(lists));
+                editor.commit();
+            }
+        }
     }
 
     public boolean containsListWithName(String name) {
@@ -71,6 +81,10 @@ public class Utils {
             }
         }
         return false;
+    }
+
+    public void changeListName() {
+
     }
 
     public boolean addItemToList(int listIndex, String item) {
