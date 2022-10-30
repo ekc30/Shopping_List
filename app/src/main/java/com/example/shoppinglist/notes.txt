@@ -1,9 +1,10 @@
- - the challenge here will be in storing the data, not writing the functionality itself as the UI and
-the functions of the components are generally simple
+ Tasks & Questions:
+ - add a back arrow button in ListActivity
 
- - how do I connect the app to Firebase to store lists there?
+ - add an information button next to the list name in ListActivity which triggers a dialog with
+     the list description - option to edit it here
 
- - still need to work out how to connect to a remote repository and push changes
+ - figure out how to connect to Firebase
 
  - when adding a list do I put another EditText in NewListDialog or just leave description blank
  and edit it in ListActivity? (there will be an edit function there anyway)
@@ -40,11 +41,6 @@ the functions of the components are generally simple
  - how do the notify functions work exactly for recycler view adapters?
 
  - how do I add an image with a transparent background?
-
-tasks:
-    - add a back arrow button in ListActivity
-    - add an information button next to the list name in ListActivity which triggers a dialog with
-    the list description - option to edit it here
 
 MainActivity.java:
     the entry point to the program where all existing lists are displayed. the user can select a
