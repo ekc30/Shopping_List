@@ -12,6 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 // TODO: expand list items to have quantities, ratings etc.
+// new commit on 30th Oct
 
 public class MainActivity extends AppCompatActivity implements NewListDialog.PassNewListDataInterface {
 
