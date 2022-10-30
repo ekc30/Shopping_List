@@ -39,6 +39,8 @@ the functions of the components are generally simple
 
  - how do the notify functions work exactly for recycler view adapters?
 
+ - how do I add an image with a transparent background?
+
 tasks:
     - add a back arrow button in ListActivity
     - add an information button next to the list name in ListActivity which triggers a dialog with
